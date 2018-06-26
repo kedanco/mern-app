@@ -1,8 +1,28 @@
 "use strict";
 
 // Step 3 define reducers
-export function booksReducers(state = { books: [] }, action) {
+export function booksReducers(
+	state = {
+		books: [
+			{
+				id: 1,
+				title: "this is the book title",
+				description: "this is the book description",
+				price: 33.33
+			},
+			{
+				id: 2,
+				title: "this is the second title",
+				description: "this is the second description",
+				price: 12.34
+			}
+		]
+	},
+	action
+) {
 	switch (action.type) {
+		case "GET_BOOKS":
+			return { ...state, books: [...state.books] };
 		case "POST_BOOK":
 			// let books = state.books.concat(action.payload);
 			return { books: [...state.books, ...action.payload] };
